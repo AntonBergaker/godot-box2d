@@ -673,6 +673,7 @@ size_t box2d::intersect_point(b2World *world_handle,
 class RayCastQueryCallback : public b2RayCastCallback {
 public:
 	int count = 0;
+	float pre_fraction = 1;
 	b2World *world;
 	bool collide_with_body;
 	bool collide_with_area;
@@ -700,6 +701,9 @@ public:
 		if (!fixture->IsSensor() && !collide_with_body) {
 			return -1;
 		}
+		if (fraction > pre_fraction) {
+			return -1;
+		}
 		if (!handle_excluded_callback(world, fixture, fixture->GetUserData(), handle_excluded_info)) {
 			hit_info_array[0] = RayHitInfo{
 				point,
@@ -707,6 +711,7 @@ public:
 				fixture,
 				fixture->GetUserData()
 			};
+			pre_fraction = fraction;
 			count = 1;
 		}
 		return 1;
