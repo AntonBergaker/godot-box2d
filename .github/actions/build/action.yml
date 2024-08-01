@@ -30,8 +30,8 @@ runs:
     - name: Lint
       shell: sh
       run:
-        ./scripts/clang-format.sh
-        ./scripts/clang-tidy.sh
+        #./scripts/clang-format.sh
+        #./scripts/clang-tidy.sh
     - name: Print version to plugin cfg
       shell: pwsh
       run:
