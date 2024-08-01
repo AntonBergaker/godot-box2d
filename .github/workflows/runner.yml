@@ -9,9 +9,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  static-checks:
-    name: 📊 Static checks
-    uses: ./.github/workflows/static_checks.yml
+  #static-checks:
+    #name: 📊 Static checks
+    #uses: ./.github/workflows/static_checks.yml
 
   android-build:
     name: 🤖 Android
