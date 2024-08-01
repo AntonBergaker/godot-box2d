@@ -702,7 +702,7 @@ public:
 			return -1;
 		}
 		if (fraction > pre_fraction) {
-			return -1;
+			return 1;
 		}
 		if (!handle_excluded_callback(world, fixture, fixture->GetUserData(), handle_excluded_info)) {
 			hit_info_array[0] = RayHitInfo{
@@ -713,6 +713,7 @@ public:
 			};
 			pre_fraction = fraction;
 			count = 1;
+			return fraction;
 		}
 		return 1;
 	}
